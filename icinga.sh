@@ -19,6 +19,12 @@ if [[ -z "$os" ]]; then
         exit 1
 fi
 
+read -p "Provider: " provider
+if [[ -z "$provider" ]]; then
+        printf '%s\n' "Vous devez rentrer un Provider"
+        exit 1
+fi
+
 ipPattern="^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$"
 read -p "Adresse IP: " ip
 if [[ $ip == $ipPattern ]]; then
@@ -38,6 +44,7 @@ object Host "${host}" {
  address = "${ip}"
  display_name = "${name}"
  vars.os_type = "${os}"
+ vars.provider = "${provider}"
  vars.client_endpoint = name
 }
 EOF
