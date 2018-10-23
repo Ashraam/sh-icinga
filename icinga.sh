@@ -43,7 +43,8 @@ object Host "${host}" {
  check_command = "hostalive"
  address = "${ip}"
  display_name = "${name}"
- vars.os_type = "${os}"
+ vars.os_type = "Linux"
+ vars.os_version = "${os}"
  vars.provider = "${provider}"
  vars.client_endpoint = name
 }
