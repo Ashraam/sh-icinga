@@ -13,6 +13,12 @@ if [[ -z "$host" ]]; then
         exit 1
 fi
 
+read -p "Type d'OS: " os
+if [[ -z "$os" ]]; then
+        printf '%s\n' "Vous devez rentrer un OS"
+        exit 1
+fi
+
 ipPattern="^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$"
 read -p "Adresse IP: " ip
 if [[ $ip == $ipPattern ]]; then
@@ -31,7 +37,7 @@ object Host "${host}" {
  check_command = "hostalive"
  address = "${ip}"
  display_name = "${name}"
- vars.os_type = "Linux"
+ vars.os_type = "${os}"
  vars.client_endpoint = name
 }
 EOF
