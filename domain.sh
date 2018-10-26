@@ -19,7 +19,7 @@ if [[ -z "$domain" ]]; then
         exit 1
 fi
 
-NEWFILE=$( cat file.txt | head -n -1 && echo -e " vars.http_vhosts[\""$domain"\"] = {
+NEWFILE=$( cat /etc/icinga2/zones.d/master/${host}.conf | head -n -1 && echo -e " vars.http_vhosts[\""$domain"\"] = {
   http_vhost = \""$domain"\"
   http_ssl = true
  }
