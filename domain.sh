@@ -26,3 +26,5 @@ NEWFILE=$( cat /etc/icinga2/zones.d/master/${host}.conf | head -n -1 && echo -e 
 }" )
 
 echo "$NEWFILE" > "/etc/icinga2/zones.d/master/${host}.conf"
+
+service icinga2 restart
